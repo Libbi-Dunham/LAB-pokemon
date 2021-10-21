@@ -1,7 +1,7 @@
 // IMPORT MODULES under test here:
 // import { example } from '../example.js';
 
-import { findById, getResults, setResults } from '../data/storageUtils.js';
+import { findById, getResults, setResults, encounterPokemon, capturePokemon } from '../data/storageUtils.js';
 import { pokemonArr } from '../data/pokemon.js';
 
 const test = QUnit.test;
@@ -76,4 +76,56 @@ test('setResults returns an empty array if there is no RESULTS key in localStora
 
     expect.deepEqual(actual, expected);
 });
+
+test('encounterPokemon increments the shown key when the item exists in results', (expect)=>{
+    // const results = [
+    //     { id: 1, encounter: 0, capture: 0 },
+    // ];
+    // const stringResults = JSON.stringify(results);
+    // localStorage.setItem('RESULTS', stringResults);
+    const expected = [
+        { id: 1, encounter: 1, capture: 1 },
+    ];
+
+    encounterPokemon(1);
+    const string = localStorage.getItem('RESULTS');
+    const actual = JSON.parse(string);
+
+    expect.deepEqual(actual, expected);
+});
+
+test('encounterPokemon adds a new item if its not in results', (expect)=>{
+    const results = [
+        { id: 1, encounter: 0, capture: 1 },
+    ];
+    const stringResults = JSON.stringify(results);
+    localStorage.setItem('RESULTS', stringResults);
+    const expected = [
+        { id: 1, encounter: 1, capture: 1 },
+    ];
+
+    encounterPokemon(1);
+    const string = localStorage.getItem('RESULTS');
+    const actual = JSON.parse(string);
+
+    expect.deepEqual(actual, expected);
+});
+
+test('capturePokemon increments the capture key when the item exists in results', (expect)=>{
+    const results = [
+        { id: 1, encounter: 1, capture: 1 },
+    ];
+    const stringResults = JSON.stringify(results);
+    localStorage.setItem('RESULTS', stringResults);
+    const expected = [
+        { id: 1, encounter: 1, capture: 2 },
+    ];
+
+    capturePokemon(1);
+    const string = localStorage.getItem('RESULTS');
+    const actual = JSON.parse(string);
+
+    expect.deepEqual(actual, expected);
+});
+
 
