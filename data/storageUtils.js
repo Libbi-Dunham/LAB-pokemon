@@ -19,8 +19,8 @@ export function capturePokemon(id){
     console.log(results);
     item.capture++;
 
-
-    localStorage.setItem('RESULTS', results);
+    const stringResults = JSON.stringify(results);
+    localStorage.setItem('RESULTS', stringResults);
 }
 
 export function encounterPokemon(id){
@@ -34,5 +34,9 @@ export function encounterPokemon(id){
         results.push(newItem);
     }
 
-    localStorage.setItem('RESULTS', results);
+    const stringResults = JSON.stringify(results);
+    localStorage.setItem('RESULTS', stringResults);
+
+
+
 }

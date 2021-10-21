@@ -27,8 +27,8 @@ const generatePokemon = ()=>{
     {
 
         random1 = Math.floor(Math.random() * pokemonArr.length);
-        random1 = Math.floor(Math.random() * pokemonArr.length);
-        random1 = Math.floor(Math.random() * pokemonArr.length);
+        random2 = Math.floor(Math.random() * pokemonArr.length);
+        random3 = Math.floor(Math.random() * pokemonArr.length);
     }
     console.log(random1, random2);
 
@@ -60,7 +60,7 @@ button.addEventListener('click', ()=>{
         totalPlays++;
         console.log(totalPlays);
         const chosenId = chosenRadio.value;
-        capturePokemon(chosenId);
+        // capturePokemon(chosenId);
         if (totalPlays >= 10){
             window.location = './results/index.html';
         } else {
