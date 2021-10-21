@@ -1,7 +1,7 @@
 // IMPORT MODULES under test here:
 // import { example } from '../example.js';
 
-import { findById } from '../data/storageUtils.js';
+import { findById, getResults, setResults } from '../data/storageUtils.js';
 import { pokemonArr } from '../data/pokemon.js';
 
 const test = QUnit.test;
@@ -51,6 +51,29 @@ test('', (expect) => {
 
     //Expect
     // Make assertions about what is expected versus the actual result
+    expect.deepEqual(actual, expected);
+});
+
+test('getResults returns the key "RESULTS" from localStorage', (expect) => {
+    const results = [
+        { id: 1, encounter: 0, capture: 0 }
+    ];
+    localStorage.setItem('RESULTS', JSON.stringify(results));
+
+    const actual = getResults();
+
+    expect.deepEqual(actual, results);
+});
+
+test('setResults returns an empty array if there is no RESULTS key in localStorage', (expect)=>{
+    localStorage.removeItem('RESULTS');
+
+    const expected = [];
+    setResults(expected);
+
+    const stringResults = localStorage.getItem('RESULTS');
+    const actual = JSON.parse(stringResults);
+
     expect.deepEqual(actual, expected);
 });
 
