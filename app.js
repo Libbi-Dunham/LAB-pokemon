@@ -1,6 +1,6 @@
 import { pokemonArr } from './data/pokemon.js';
 console.log(pokemonArr);
-import { encounterPokemon, capturePokemon } from './storage-utils.js';
+import { encounterPokemon, capturePokemon } from './data/storageUtils.js';
 
 
 
@@ -23,7 +23,8 @@ const generatePokemon = ()=>{
         random1 === random2 ||
       random1 === random3 ||
       random2 === random3
-    ) {
+    ) 
+    {
 
         random1 = Math.floor(Math.random() * pokemonArr.length);
         random1 = Math.floor(Math.random() * pokemonArr.length);
@@ -32,17 +33,18 @@ const generatePokemon = ()=>{
     console.log(random1, random2);
 
     let pokemon1 = pokemonArr[random1];
-    capturePokemon(pokemon1.id);
+    encounterPokemon(pokemon1.id);
     pokemonImg1.src = pokemon1.url_image;
+    console.log(pokemon1.url_image);
     pokemonRadio1.value = pokemon1.id;
 
     let pokemon2 = pokemonArr[random2];
-    capturePokemon(pokemon2.id);
+    encounterPokemon(pokemon2.id);
     pokemonImg2.src = pokemon2.url_image;
     pokemonRadio2.value = pokemon2.id;
 
     let pokemon3 = pokemonArr[random3];
-    capturePokemon(pokemon3.id);
+    encounterPokemon(pokemon3.id);
     pokemonImg3.src = pokemon3.url_image;
     pokemonRadio3.value = pokemon3.id;
 };
@@ -50,20 +52,17 @@ let totalPlays = 0;
 generatePokemon();
 
 button.addEventListener('click', ()=>{
-    totalPlays++;
     const chosenRadio = document.querySelector('input[type=radio]:checked');
-    const chosenId = chosenRadio.value;
-    console.log(chosenId);
-    encounterPokemon(chosenId);
 
     generatePokemon();
 
     if (chosenRadio){
-        const chosenId = chosenRadio.value;
         totalPlays++;
-        encounterPokemon(chosenId);
-        if (totalPlays >= 3){
-            window.location = './results';
+        console.log(totalPlays);
+        const chosenId = chosenRadio.value;
+        capturePokemon(chosenId);
+        if (totalPlays >= 10){
+            window.location = './results/index.html';
         } else {
             generatePokemon();
         }
