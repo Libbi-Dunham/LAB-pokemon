@@ -59,8 +59,8 @@ button.addEventListener('click', ()=>{
     if (chosenRadio){
         totalPlays++;
         console.log(totalPlays);
-        const chosenId = chosenRadio.value;
-        // capturePokemon(chosenId);
+        const chosenId = Number(chosenRadio.value);
+        capturePokemon(chosenId);
         if (totalPlays >= 10){
             window.location = './results/index.html';
         } else {

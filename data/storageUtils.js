@@ -7,7 +7,7 @@ export function findById(id, items){
 }
 
 export function getResults(){
-    const resultString = localStorage.getItem('RESULT') || '[]';
+    const resultString = localStorage.getItem('RESULTS') || '[]';
     const result = JSON.parse(resultString);
     return result;
 }
@@ -17,10 +17,12 @@ export function capturePokemon(id){
     let item = findById(id, results);
     console.log(item);
     console.log(results);
+    console.log(id);
     item.capture++;
 
-    const stringResults = JSON.stringify(results);
-    localStorage.setItem('RESULTS', stringResults);
+    setResults(results);
+    // const stringResults = JSON.stringify(results);
+    // localStorage.setItem('RESULTS', stringResults);
 }
 
 export function encounterPokemon(id){
@@ -34,9 +36,13 @@ export function encounterPokemon(id){
         results.push(newItem);
     }
 
+    setResults(results);
+
+    // const stringResults = JSON.stringify(results);
+    // localStorage.setItem('RESULTS', stringResults);
+}
+
+export function setResults(results){
     const stringResults = JSON.stringify(results);
     localStorage.setItem('RESULTS', stringResults);
-
-
-
 }
