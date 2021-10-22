@@ -84,7 +84,7 @@ test('encounterPokemon increments the shown key when the item exists in results'
     // const stringResults = JSON.stringify(results);
     // localStorage.setItem('RESULTS', stringResults);
     const expected = [
-        { id: 1, encounter: 1, capture: 1 },
+        { id: 1, encounter: 1, capture: 0 },
     ];
 
     encounterPokemon(1);
