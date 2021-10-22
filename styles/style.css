@@ -11,3 +11,25 @@ button {
     width: 10%;
     font-size: 13px;
 }
+
+img {
+    width: 300px;
+    background-color: aqua;
+    border-radius: 30%;
+    
+}
+
+#pokemon1 {
+    width: 600px;
+}
+
+input[type=radio]{
+    display:none;
+
+}
+
+input[type=radio]:checked + img {
+    border: solid tomato 2px;
+    background-color: peachpuff;
+    border-radius: 25%;
+}
