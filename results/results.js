@@ -17,7 +17,7 @@ for (let item of results){
     const header = document.createElement('h2');
     header.textContent = pokemon.pokemon;
     const resultSpan1 = document.createElement('span');
-    resultSpan1.textContent = `encounter: ${item.encounter}`;
+    resultSpan1.textContent = `encounter: ${item.encounter} `;
     const resultSpan2 = document.createElement('span');
     resultSpan2.textContent = `capture: ${item.capture}`;
 
