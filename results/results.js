@@ -7,14 +7,15 @@ const main = document.getElementById('main');
 
 for (let item of results){
     const pokemon = findById(item.id, pokemonArr);
-    console.log(pokemon);
-    console.log(item);
-    console.log(pokemonArr);
+    // console.log(pokemon);
+    // console.log(item);
+    // console.log(pokemonArr);
 
     const div = document.createElement('div');
     const img = document.createElement('img');
     img.src = pokemon.url_image;
     const header = document.createElement('h2');
+    header.textContent = pokemon.pokemon;
     const resultSpan1 = document.createElement('span');
     resultSpan1.textContent = `encounter: ${item.encounter}`;
     const resultSpan2 = document.createElement('span');
@@ -25,20 +26,22 @@ for (let item of results){
 }
 
 const names = results.map((item)=>{
-    const pokemon = findById(item.id, pokemon);
-    return pokemon.name;
+    const pokemonId = findById(item.id, pokemonArr);
+    // console.log(pokemonId);
+    return pokemonId.pokemon;
 });
 
 const capture = results.map(item=>item.capture);
 
 var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
+// eslint-disable-next-line no-undef
+new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: 'names',
+        labels: names,
         datasets: [{
             label: 'number of times captured',
-            data: captured,
+            data: capture,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
