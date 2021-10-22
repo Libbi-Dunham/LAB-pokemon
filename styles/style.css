@@ -1,20 +1,23 @@
 body {
     text-align: center;
-    background-image: url('../assets/pokemon.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-
+    background-color: #3a7cbb;
 }
 
 button {
-    border-radius: 40%;
-    width: 10%;
+    border-radius: 35%;
+    width: 8%;
     font-size: 13px;
+    padding: 10px;
+    margin-top: 2%;
+    font-family: 'PressStart2PRegular';
+    font-weight: normal;
+    font-style: normal;
+
 }
 
 img {
     width: 300px;
-    background-color: aqua;
+    background-color: tomato;
     border-radius: 30%;
     
 }
@@ -30,6 +33,12 @@ input[type=radio]{
 
 input[type=radio]:checked + img {
     border: solid tomato 2px;
-    background-color: peachpuff;
+    background-color: #f8d478;
     border-radius: 25%;
+}
+
+h2 {
+    font-family: 'PressStart2PRegular';
+    font-weight: normal;
+    font-style: normal;
 }
