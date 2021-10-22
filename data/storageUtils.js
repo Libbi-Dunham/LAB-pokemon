@@ -32,7 +32,7 @@ export function encounterPokemon(id){
     if (item){
         item.encounter++;
     } else {
-        const newItem = { id: id, capture: 1, encounter: 1 };
+        const newItem = { id: id, capture: 0, encounter: 1 };
         results.push(newItem);
     }
 
